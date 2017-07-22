@@ -1,0 +1,30 @@
+import { Docker } from 'node-docker-api';
+import { Option } from 'npm-monads';
+export { Option } from 'npm-monads';
+import * as instructions from './instructions';
+export { instructions as Instructions };
+export default class Dockering {
+    name: string;
+    instructions: Array<instructions.Instruction>;
+    docker: Docker;
+    constructor(name?: string, instructions?: Array<instructions.Instruction>, docker?: Docker);
+    fromImage(image: string, name?: Option<string>): Dockering;
+    arg(key: string, value?: Option<string>): Dockering;
+    run(command: string | Array<string>): Dockering;
+    cmd(command: string | Array<string>): Dockering;
+    label(labels: Array<instructions.Label>): Dockering;
+    expose(ports: Array<number>): Dockering;
+    env(variables: Array<instructions.Env>): Dockering;
+    add(srcs: Array<string>, dst: string): Dockering;
+    copy(srcs: Array<string>, dst: string): Dockering;
+    entrypoint(command: string | Array<string>): Dockering;
+    volume(volumes: Array<string>): Dockering;
+    user(user: string): Dockering;
+    workdir(path: string): Dockering;
+    onbuild(instruction: instructions.Instruction): Dockering;
+    stopsignal(signal: string): Dockering;
+    healthcheck(action: Option<instructions.HealthcheckOptions>): Dockering;
+    shell(cmd: Array<string>): Dockering;
+    build(): Promise<{}>;
+    private withNewInstruction(newInstruction);
+}

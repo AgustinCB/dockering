@@ -1,0 +1,43 @@
+{
+  "name": "dockering",
+  "version": "1.0.0",
+  "description": "Tool to dockerize your node app easily",
+  "main": "./lib/index",
+  "typings": "./lib/index",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "test": "ava --timeout 30000 test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgustinCB/dockering.git"
+  },
+  "keywords": [
+    "docker",
+    "container",
+    "node"
+  ],
+  "author": "AgustinCB",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/AgustinCB/dockering/issues"
+  },
+  "homepage": "https://github.com/AgustinCB/dockering#readme",
+  "devDependencies": {
+    "ava": "^0.21.0",
+    "tslint": "^5.5.0",
+    "typescript": "2.3.4"
+  },
+  "dependencies": {
+    "@types/node": "^8.0.14",
+    "minimist": "^1.2.0",
+    "node-docker-api": "^1.1.16",
+    "npm": "^5.3.0",
+    "npm-monads": "^1.0.4",
+    "tar-stream": "^1.5.4"
+  }
+}

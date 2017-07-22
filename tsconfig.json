@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "module": "commonjs",
+    "target": "es6",
+    "sourceMap": true,
+    "declaration": true,
+    "types": ["node", "npm-monads", "node-docker-api"],
+    "removeComments": false,
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*.ts","typings/**/*.ts"]
+}

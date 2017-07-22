@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "docker-modem": "registry:npm/docker-modem#0.3.1+20161017100301"
+  }
+}
