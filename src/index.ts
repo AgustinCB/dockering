@@ -1,3 +1,5 @@
+'use strict';
+
 import * as path from 'path';
 import { Stream } from 'stream';
 import { Docker } from 'node-docker-api';
@@ -5,7 +7,7 @@ import { Option, Either } from 'npm-monads';
 export { Option } from 'npm-monads';
 import * as instructions from './instructions';
 export {instructions as Instructions}
-const tar = require('tar-stream');
+const tar = require('tar-fs');
 
 const promisifyStream = (stream: Stream): Promise<{}> => {
   return new Promise((resolve, reject) => {
@@ -89,17 +91,13 @@ export default class Dockering {
     return this.withNewInstruction(new instructions.Shell(cmd));
   }
 
-  build(): Promise<{}> {
+  build(project: string = '.'): Promise<{}> {
     const tarStream = tar
-      .pack();
-    const dockerfileContent = this.instructions.map(i => i.toString()).join('\n');
-    const dockerfile = tarStream
-      .entry({ name: 'Dockerfile', size: dockerfileContent.length }, (err: string) => {
-        if (err) throw err;
-        tarStream.finalize();
+      .pack(project, {
+        ignore: (name: string) => name.indexOf('node_modules') === 0
       });
-    dockerfile.write(dockerfileContent);
-    dockerfile.end();
+    const dockerfileContent = this.instructions.map(i => i.toString()).join('\n');
+    tarStream.entry({ name: 'Dockerfile' }, dockerfileContent)
     return this.docker.image.build(tarStream, { t: this.name })
       .then((stream: Stream) => promisifyStream(stream));
   }

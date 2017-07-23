@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+const minimist = require('minimist'),
+  command = require('../lib/command').default,
+  Dockering = require('../lib/index').default;
+
+if (require.main === module) {
+  const args = minimist(process.argv.slice(2))
+  command(args)
+    .catch((err) => console.log('An error happened!', err))
+}

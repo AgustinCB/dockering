@@ -4,6 +4,9 @@
   "description": "Tool to dockerize your node app easily",
   "main": "./lib/index",
   "typings": "./lib/index",
+  "bin": {
+    "dockering": "./bin/dockering"
+  },
   "directories": {
     "test": "test"
   },
@@ -38,6 +41,6 @@
     "node-docker-api": "^1.1.16",
     "npm": "^5.3.0",
     "npm-monads": "^1.0.4",
-    "tar-stream": "^1.5.4"
+    "tar-fs": "^1.15.3"
   }
 }

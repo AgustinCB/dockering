@@ -25,6 +25,6 @@ export default class Dockering {
     stopsignal(signal: string): Dockering;
     healthcheck(action: Option<instructions.HealthcheckOptions>): Dockering;
     shell(cmd: Array<string>): Dockering;
-    build(): Promise<{}>;
+    build(project?: string): Promise<{}>;
     private withNewInstruction(newInstruction);
 }

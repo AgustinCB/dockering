@@ -106,7 +106,7 @@ test('shell instruction', t => {
 test('basic build', async t => {
   const docker = new Docker({ socketPath: '/var/run/docker.sock' });
   const dockerfile = (new Dockering('testimage')).fromImage('ubuntu').run('echo "hola"');
-  await dockerfile.build();
+  await dockerfile.build('.');
   const image = await docker.image.get('testimage').status();
   t.truthy(image.data);
   await image.remove();
