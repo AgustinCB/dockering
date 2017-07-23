@@ -17,7 +17,7 @@ export interface Package {
 const getConfig = (path: string): Package => {
   try {
     return require(path);
-  } catch(e) {
+  } catch (e) {
     console.log('error', path, e);
     throw 'could not find package.json';
   }
