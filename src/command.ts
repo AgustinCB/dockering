@@ -41,5 +41,5 @@ export default function (args: Args): Promise<{}> {
     .copy(['.'], '/app')
     .expose([port])
     .cmd(startCmd.split(' '))
-    .build();
+    .build(projectPath);
 }
