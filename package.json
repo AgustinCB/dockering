@@ -1,6 +1,6 @@
 {
   "name": "dockering",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tool to dockerize your node app easily",
   "main": "./lib/index",
   "typings": "./lib/index",

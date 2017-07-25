@@ -8,6 +8,7 @@ export interface Args {
   project?: string;
   name?: string;
   tag?: string
+  port?: string;
 };
 
 export interface Package {
@@ -26,6 +27,7 @@ const getConfig = (path: string): Package => {
 export default function (args: Args): Promise<{}> {
   const startCmd = args.cmd || 'npm start';
   const projectPath = args.project || process.cwd();
+  const port = parseInt(args.port) || 8080;
   const confFile = `${projectPath}/package.json`;
   const configuration = getConfig(confFile);
   const name = args.name || configuration.name;
@@ -37,6 +39,7 @@ export default function (args: Args): Promise<{}> {
     .copy(['package.json'], '/app')
     .run('npm install')
     .copy(['.'], '/app')
+    .expose([port])
     .cmd(startCmd.split(' '))
     .build();
 }
