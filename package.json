@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "test": "ava --timeout 30000 test"
+    "test": "npm run lint && ava --timeout 2m test"
   },
   "repository": {
     "type": "git",
