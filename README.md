@@ -16,7 +16,7 @@ Running that command will create a docker container based on the node project on
 docker run -p 8080:8080 -d newimagename:tag
 ```
 
-And that will start your new server in a docker ccontainer
+And that will start your new server in a docker container
 
 ## Creating custom Dockerfiles
 
